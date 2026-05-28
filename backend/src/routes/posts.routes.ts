@@ -36,6 +36,8 @@ postsRouter.get("/", (req, res) => {
     );
   }
 
+  
+
   if (author && typeof author === "string") {
     posts = posts.filter(
       (post) => String(post.author).toLowerCase() === author.toLowerCase(),
