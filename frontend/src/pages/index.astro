@@ -2,12 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import { getPosts } from '../lib/api';
+
+const posts = await getPosts();
 ---
 
 <BaseLayout>
   <Header />
-  <main>
-    <p class="text-text-primary p-8">Hola Artemis</p>
+  <main class="flex-1">
+    <PhotoGrid posts={posts} />
   </main>
-  <Footer/>
+  <Footer />
 </BaseLayout>
