@@ -1,0 +1,34 @@
+---
+import type { Post } from '../lib/types';
+import PostCard from './PostCard.astro';
+
+interface Props {
+  currentSlug: string;
+  posts: Post[];
+}
+
+const { currentSlug, posts } = Astro.props;
+
+const related = posts
+  .filter((post) => post.slug !== currentSlug)
+  .slice(0, 3);
+---
+
+<section class="px-6 py-16 border-t border-elevated">
+  <div class="flex flex-col gap-1 mb-8">
+    <span class="text-text-secondary text-xs tracking-widest uppercase">
+      Continue Reading
+    </span>
+    <h2 class="text-text-primary text-2xl font-bold">
+      Related stories
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {related.map((post) => (
+      <div class="h-64">
+        <PostCard post={post} />
+      </div>
+    ))}
+  </div>
+</section>
