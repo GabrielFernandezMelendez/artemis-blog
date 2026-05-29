@@ -13,8 +13,8 @@ const rest = posts.slice(1);
 ---
 
 <section
-  class="grid w-full grid-cols-1 md:grid-cols-3 gap-1 overflow-hidden"
-  style="grid-auto-rows: calc(100vw / 3);"
+  class="grid w-full grid-cols-1 md:grid-cols-3 gap-1 overflow-hidden
+         [grid-auto-rows:60vw] md:[grid-auto-rows:calc(100vw/3)]"
 >
   <div class="md:col-span-2 md:row-span-2 h-full min-h-0">
     <PostCard post={featured} featured={true} />

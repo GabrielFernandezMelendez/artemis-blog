@@ -1,16 +1,19 @@
 ---
 import type { Post } from '../lib/types';
 import PostCard from './PostCard.astro';
+import { getPostsByTag } from '../lib/api';
 
 interface Props {
-  currentSlug: string;
-  posts: Post[];
+  currentPost: Post;
 }
 
-const { currentSlug, posts } = Astro.props;
+const { currentPost } = Astro.props;
 
-const related = posts
-  .filter((post) => post.slug !== currentSlug)
+const firstTag = currentPost.tags.split(',')[0].trim();
+const tagPosts = await getPostsByTag(firstTag);
+
+const related = tagPosts
+  .filter((post) => post.slug !== currentPost.slug)
   .slice(0, 3);
 ---
 

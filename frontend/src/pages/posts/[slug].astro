@@ -19,7 +19,6 @@ if (!post) {
   return Astro.redirect('/404');
 }
 
-const allPosts = await getPosts();
 
 const formattedDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
   month: 'long',
@@ -81,7 +80,7 @@ const formattedDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
     </article>
 
     <!-- Related stories -->
-    <RelatedStories currentSlug={post.slug} posts={allPosts} />
+    <RelatedStories currentPost={post} />
 
   </main>
 
