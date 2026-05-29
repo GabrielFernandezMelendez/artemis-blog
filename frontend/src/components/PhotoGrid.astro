@@ -13,16 +13,16 @@ const rest = posts.slice(1);
 ---
 
 <section
-  class="grid w-full h-[90vh] grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-1"
+  class="grid w-full h-[90vh] grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-1 overflow-hidden"
 >
   <!-- Featured -->
-  <div class="md:col-span-2 md:row-span-2 h-full">
+  <div class="md:col-span-2 md:row-span-2 h-full min-h-0">
     <PostCard post={featured} featured={true} />
   </div>
 
   <!-- Rest -->
   {rest.map((post) => (
-    <div class="h-full">
+    <div class="h-full min-h-0">
       <PostCard post={post} />
     </div>
   ))}
