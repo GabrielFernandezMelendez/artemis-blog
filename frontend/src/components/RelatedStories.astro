@@ -1,7 +1,7 @@
 ---
-import type { Post } from '../lib/types';
-import PostCard from './PostCard.astro';
-import { getPostsByTag } from '../lib/api';
+import type { Post } from "../lib/types";
+import PostCard from "./PostCard.astro";
+import { getPostsByTag } from "../lib/api";
 
 interface Props {
   currentPost: Post;
@@ -9,7 +9,7 @@ interface Props {
 
 const { currentPost } = Astro.props;
 
-const firstTag = currentPost.tags.split(',')[0].trim();
+const firstTag = currentPost.tags.split(",")[0].trim();
 const tagPosts = await getPostsByTag(firstTag);
 
 const related = tagPosts
@@ -19,19 +19,21 @@ const related = tagPosts
 
 <section class="px-6 py-16 border-t border-elevated">
   <div class="flex flex-col gap-1 mb-8">
-    <span class="text-text-secondary text-xs tracking-widest uppercase">
+    <span class="text-warm text-xs tracking-widest uppercase">
       Continue Reading
     </span>
-    <h2 class="text-text-primary text-2xl font-bold">
+    <h2 class="text-text-primary text-2xl sm:text-4xl font-bold">
       Related stories
     </h2>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    {related.map((post) => (
-      <div class="h-64">
-        <PostCard post={post} />
-      </div>
-    ))}
+    {
+      related.map((post) => (
+        <div class="h-64">
+          <PostCard post={post} />
+        </div>
+      ))
+    }
   </div>
 </section>
