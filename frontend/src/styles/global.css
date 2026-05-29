@@ -2,7 +2,6 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Colors */
   --color-bg-base:           #020202;
   --color-surface:           #111111;
   --color-elevated:          #1E1E1E;
@@ -10,24 +9,6 @@
   --color-text-secondary:    #A0A0A0;
   --color-accent:            #2563EB;
   --color-warm:              #C9A84C;
-
-  /* Spacing */
-  --spacing-4:  4px;
-  --spacing-8:  8px;
-  --spacing-12: 12px;
-  --spacing-16: 16px;
-  --spacing-24: 24px;
-  --spacing-32: 32px;
-  --spacing-48: 48px;
-  --spacing-64: 64px;
-  --spacing-96: 96px;
-}
-
-/* Reset base */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
