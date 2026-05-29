@@ -2,19 +2,19 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-bg-base:           #020202;
-  --color-surface:           #111111;
-  --color-elevated:          #1E1E1E;
-  --color-text-primary:      #F1F1F1;
-  --color-text-secondary:    #A0A0A0;
-  --color-accent:            #2563EB;
-  --color-warm:              #C9A84C;
+  --color-bg-base: #000000;
+  --color-surface: #0a0a0c;
+  --color-elevated: #14141a;
+  --color-text-primary: #f5f5f7;
+  --color-text-secondary: #8b8b96;
+  --color-accent: #2a6ff2;
+  --color-warm: #d4b262;
 }
 
 body {
-  background-color: #020202;
-  color: #F1F1F1;
-  font-family: 'Inter', sans-serif;  
+  background-color: #000000;
+  color: #f5f5f7;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 

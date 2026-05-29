@@ -19,7 +19,7 @@ const formattedDate = new Date(post.publishedAt)
 
 <a
   href={`/posts/${post.slug}`}
-  class="group relative block overflow-hidden bg-surface w-full h-full no-underline"
+  class="group relative block overflow-hidden bg-surface w-full aspect-4/5 md:aspect-auto md:h-full no-underline"
 >
   <img
     src={post.coverImage.src}
