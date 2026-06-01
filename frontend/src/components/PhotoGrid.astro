@@ -7,24 +7,18 @@ interface Props {
 }
 
 const { posts } = Astro.props;
-
-const featured = posts[0];
-const rest = posts.slice(1);
 ---
 
-<section
-  class="grid w-full grid-cols-1 md:grid-cols-3 gap-1 overflow-hidden
-         [auto-rows:60vw] md:[auto-rows:calc(100vw/3)]"
->
+<section class="grid w-full grid-cols-1 md:grid-cols-3 gap-1 overflow-hidden [auto-rows:60vw] md:[auto-rows:calc(100vw/3)]">
+
   <div class="md:col-span-2 md:row-span-2 h-full min-h-0">
-    <PostCard post={featured} featured={true} />
+    <PostCard post={posts[0]} featured={true} />
   </div>
 
-  {
-    rest.map((post) => (
-      <div class="h-full min-h-0">
-        <PostCard post={post} />
-      </div>
-    ))
-  }
+  {posts.slice(1).map((post) => (
+    <div class="h-full min-h-0">
+      <PostCard post={post} />
+    </div>
+  ))}
+
 </section>
