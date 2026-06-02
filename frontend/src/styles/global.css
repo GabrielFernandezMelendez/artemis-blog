@@ -2,6 +2,7 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
+  /* Colors */
   --color-bg-base: #000000;
   --color-surface: #0a0a0c;
   --color-elevated: #14141a;
@@ -9,12 +10,39 @@
   --color-text-secondary: #8b8b96;
   --color-accent: #2a6ff2;
   --color-warm: #d4b262;
+
+  /* Spacing */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
+  --spacing-96: 96px;
+
+  /* Typography */
+
+  --font-size-display: 96px;
+  --font-size-h1: 64px;
+  --font-size-h2: 40px;
+  --font-size-h3: 24px;
+  --font-size-body-lg: 20px;
+  --font-size-body: 16px;
+  --font-size-caption: 13px;
+  --font-size-label: 12px;
+
+  /* Font weight */
+  --font-weight-regular: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 700;
 }
 
 body {
   /*hay que poner todo los nombres de las variables en donde se haga uso de estos valores*/
-  background-color: var(color-bg-base);
-  color: #f5f5f7;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -24,11 +52,3 @@ img {
   display: block;
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: nowrap;
-}
