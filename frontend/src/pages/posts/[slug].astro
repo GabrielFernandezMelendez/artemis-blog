@@ -4,7 +4,9 @@ import Header from "../../components/organisms/Header.astro";
 import Footer from "../../components/organisms/Footer.astro";
 import RelatedStories from "../../components/organisms/RelatedStories.astro";
 import PostDate from "../../components/atoms/PostDate.astro";
+import PostMeta from "../../components/atoms/PostMeta.astro";
 import { getPostBySlug, getPosts, getPostsByTag } from "../../lib/api";
+
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -45,11 +47,7 @@ const relatedPosts = tagPosts
         {post.title}
       </h1>
 
-      <div class="flex items-center gap-4 text-text-secondary text-xs tracking-widest uppercase">
-        <PostDate date={post.publishedAt} format="long" />
-        <span>·</span>
-        <span>{post.readingTime} min read</span>
-      </div>
+      <PostMeta date={post.publishedAt} readingTime={post.readingTime} />
 
       <p class="text-text-secondary text-lg leading-relaxed">
         {post.excerpt}
