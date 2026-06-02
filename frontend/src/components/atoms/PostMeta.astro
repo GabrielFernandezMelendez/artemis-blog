@@ -7,20 +7,10 @@ interface Props {
 }
 
 const { date, readingTime } = Astro.props;
-
-const formatted = new Date(date)
-  .toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  })
-  .toUpperCase();
 ---
 
-<div
-  class="flex flex-col gap-1 text-text-secondary text-label font-semibold tracking-widest uppercase sm:flex-row sm:items-center sm:gap-2"
->
-  <time datetime={date}>{formatted}</time>
+<div class="flex flex-col gap-1 text-text-secondary text-label font-semibold tracking-widest uppercase sm:flex-row sm:items-center sm:gap-2">
+  <PostDate date={date} format="long" />
   <span class="hidden sm:inline" aria-hidden="true">·</span>
   <span>{readingTime} min read</span>
 </div>
