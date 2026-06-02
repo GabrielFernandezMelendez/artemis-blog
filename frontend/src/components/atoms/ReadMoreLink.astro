@@ -1,0 +1,11 @@
+---
+interface Props {
+  label?: string;
+}
+
+const { label = "Read story →" } = Astro.props;
+---
+
+<span class="text-warm text-sm mt-1">
+  {label}
+</span>

@@ -1,31 +1,18 @@
 ---
 import type { Post } from "../../lib/types";
+import PostDate from "../atoms/PostDate.astro";
+import ReadMoreLink from "../atoms/ReadMoreLink.astro";
 
 interface Props {
   post: Post;
-  featured?: boolean;
 }
 
-const { post, featured = false } = Astro.props;
-
-const formattedDate = new Date(post.publishedAt)
-  .toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  })
-  .toUpperCase();
+const { post } = Astro.props;
 ---
 
-<a 
-  href={`/posts/${post.slug}`} 
-  aria-label={`Leer artículo: ${post.title}`}
-  class="group relative block overflow-hidden bg-surface w-full h-full no-underline focus:ring-2 focus:ring-accent"
->
+<a href={`/posts/${post.slug}`} aria-label={`Leer artículo: ${post.title}`} class="group relative block overflow-hidden bg-surface w-full h-full no-underline focus:ring-2 focus:ring-accent">
 
-  <span class="absolute bottom-0 left-0 right-0 p-4 bg-black/90 text-text-primary text-base font-bold text-center
-               opacity-0 translate-y-full transition-all duration-200
-               group-focus:opacity-100 group-focus:translate-y-0 z-10">
+  <span class="absolute bottom-0 left-0 right-0 p-4 bg-black/90 text-text-primary text-base font-bold text-center z-10 opacity-0 translate-y-full transition-all duration-200 group-focus:opacity-100 group-focus:translate-y-0 group-hover:opacity-0 group-hover:translate-y-full">
     {post.title}
   </span>
 
@@ -33,11 +20,10 @@ const formattedDate = new Date(post.publishedAt)
 
   <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300"></div>
 
-  <!-- Añadido group-focus:hidden para ocultarlo cuando hay foco -->
-  <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-2 translate-y-0 opacity-100 sm:translate-y-4 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 transition-all duration-300 group-focus:hidden">
-    <span class="text-text-secondary text-xs tracking-widest uppercase">{formattedDate}</span>
-    <h2 class={`text-text-primary font-bold leading-tight ${featured ? "text-2xl" : "text-base"}`}>{post.title}</h2>
-    <p class={`text-text-secondary text-sm mt-1 ${featured ? "line-clamp-2" : "line-clamp-1"}`}>{post.excerpt}</p>
-    <span class="text-warm text-sm mt-1">Read story →</span>
+  <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-2 translate-y-0 opacity-100 sm:translate-y-4 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 transition-all duration-300 group-focus:opacity-0 group-focus:group-hover:opacity-100">
+    <PostDate date={post.publishedAt} />
+    <h2 class="text-text-primary font-bold leading-tight text-base">{post.title}</h2>
+    <p class="text-text-secondary text-sm mt-1 line-clamp-1">{post.excerpt}</p>
+    <ReadMoreLink />
   </div>
 </a>
