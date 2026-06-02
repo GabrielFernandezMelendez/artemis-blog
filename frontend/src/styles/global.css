@@ -24,14 +24,14 @@
 
   /* Typography */
 
-  --font-size-display: 96px;
-  --font-size-h1: 64px;
-  --font-size-h2: 40px;
-  --font-size-h3: 24px;
-  --font-size-body-lg: 20px;
-  --font-size-body: 16px;
-  --font-size-caption: 13px;
-  --font-size-label: 12px;
+  --text-display: 96px;
+  --text-h1: 64px;
+  --text-h2: 40px;
+  --text-h3: 24px;
+  --text-body-lg: 20px;
+  --text-body: 16px;
+  --text-caption: 13px;
+  --text-label: 12px;
 
   /* Font weight */
   --font-weight-regular: 400;
@@ -51,4 +51,3 @@ img {
   max-width: 100%;
   display: block;
 }
-
