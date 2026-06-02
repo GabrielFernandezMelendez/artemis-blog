@@ -7,15 +7,17 @@ interface Props {
 }
 
 const { posts } = Astro.props;
+//ya no esta feature y aqui separamos los post para que el primero sea el destacado 
+const [featuredPost, ...remainingPosts] = posts;
 ---
 
 <section class="grid w-full grid-cols-1 md:grid-cols-3 gap-1 overflow-hidden [auto-rows:60vw] md:[auto-rows:calc(100vw/3)]">
 
   <div class="md:col-span-2 md:row-span-2 h-full min-h-0">
-    <PostCard post={posts[0]} />
+    <PostCard post={featuredPost} />
   </div>
 
-  {posts.slice(1).map((post) => (
+  {remainingPosts.map((post) => (
     <div class="h-full min-h-0">
       <PostCard post={post} />
     </div>
