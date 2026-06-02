@@ -1,7 +1,7 @@
 ---
-import type { Post } from "../lib/types";
-import PostCard from "./PostCard.astro";
-import { getPostsByTag } from "../lib/api";
+import type { Post } from "../../lib/types";
+import PostCard from "../molecules/PostCard.astro";
+import { getPostsByTag } from "../../lib/api";
 
 interface Props {
   currentPost: Post;
