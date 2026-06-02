@@ -4,7 +4,7 @@ import Header from "../components/organisms/Header.astro";
 import Footer from "../components/organisms/Footer.astro";
 import PhotoGrid from "../components/organisms/PhotoGrid.astro";
 import Hero from "../components/organisms/Hero.astro";
-import { HERO } from "../consts";
+import { HERO } from "../constants";
 import { getPosts } from "../lib/api";
 
 const posts = await getPosts();
