@@ -6,15 +6,19 @@ interface Props {
 
 const { date, readingTime } = Astro.props;
 
-const formatted = new Date(date).toLocaleDateString("en-US", {
-  month: "long",
-  day: "numeric",
-  year: "numeric",
-}).toUpperCase();
+const formatted = new Date(date)
+  .toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  })
+  .toUpperCase();
 ---
 
-<div class="flex items-center gap-4 text-text-secondary text-xs tracking-widest uppercase">
+<div
+  class="flex flex-col gap-1 text-text-secondary text-label font-semibold tracking-widest uppercase sm:flex-row sm:items-center sm:gap-2"
+>
   <time datetime={date}>{formatted}</time>
-  <span>·</span>
+  <span class="hidden sm:inline" aria-hidden="true">·</span>
   <span>{readingTime} min read</span>
 </div>
