@@ -1,4 +1,6 @@
 ---
+import SectionLabel from "../atoms/SectionLabel.astro";
+
 interface Props {
   eyebrow: string;
   title: string;
@@ -9,9 +11,7 @@ const { eyebrow, title, description } = Astro.props;
 ---
 
 <section class="p-8 sm:p-16 pt-2 pb-6 flex flex-col gap-2">
-  <span class="text-warm text-md tracking-widest uppercase">
-    {eyebrow}
-  </span>
+  <SectionLabel text={eyebrow} />
   <h1 class="text-text-primary text-4xl sm:text-8xl font-bold leading-tight">
     {title}
   </h1>
