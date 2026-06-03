@@ -1,29 +1,79 @@
 ---
 interface Props {
   as: "h1" | "h2" | "h3" | "p" | "span" | "time";
-  variant: "display" | "h1" | "h2" | "h3" | "body-lg" | "body" | "caption" | "label";
+  variant:
+    | "hero-title"
+    | "hero-description"
+    | "card-title"
+    | "card-excerpt"
+    | "card-detail-title"
+    | "overlay-title"
+    | "post-date"
+    | "section-label"
+    | "body";
   class?: string;
 }
 
 const { as, variant, class: className = "" } = Astro.props;
 
 const variantStyles: Record<string, string> = {
-  display: "text-display font-bold leading-tight text-text-primary",
-  h1: "text-h1 font-bold leading-tight text-text-primary",
-  h2: "text-h2 font-bold leading-tight text-text-primary",
-  h3: "text-h3 font-bold leading-tight text-text-primary",
-  "body-lg": "text-body-lg font-regular leading-relaxed text-text-primary",
-  body: "text-body font-normal leading-relaxed text-text-primary",
-  caption: "text-caption font-normal text-text-secondary",
-  label: "text-label font-semibold tracking-widest uppercase text-text-secondary",
+  "hero-title":
+    "max-w-[320px] sm:max-w-none text-text-primary text-h2 sm:text-display font-bold leading-tight",
+  "hero-description":
+    "text-text-primary text-caption font-regular sm:text-h3 sm:font-bold",
+  "card-title": "text-text-primary font-bold leading-tight text-base",
+  "card-excerpt": "text-text-secondary text-sm mt-1 line-clamp-1",
+  "card-detail-title":
+    "text-text-primary text-body-lg font-regular leading-tight line-clamp-1",
+  "overlay-title": "text-text-primary text-base font-bold text-center",
+  "post-date": "text-text-secondary text-label font-semibold uppercase",
+  "section-label":
+    "text-text-secondary text-label font-semibold tracking-widest uppercase",
+  body: "text-text-primary text-body font-regular leading-relaxed",
 };
 
 const styles = variantStyles[variant];
 ---
 
-{as === "h1" && <h1 class={`${styles} ${className}`}><slot /></h1>}
-{as === "h2" && <h2 class={`${styles} ${className}`}><slot /></h2>}
-{as === "h3" && <h3 class={`${styles} ${className}`}><slot /></h3>}
-{as === "p" && <p class={`${styles} ${className}`}><slot /></p>}
-{as === "span" && <span class={`${styles} ${className}`}><slot /></span>}
-{as === "time" && <time class={`${styles} ${className}`}><slot /></time>}
+{
+  as === "h1" && (
+    <h1 class={`${styles} ${className}`}>
+      <slot />
+    </h1>
+  )
+}
+{
+  as === "h2" && (
+    <h2 class={`${styles} ${className}`}>
+      <slot />
+    </h2>
+  )
+}
+{
+  as === "h3" && (
+    <h3 class={`${styles} ${className}`}>
+      <slot />
+    </h3>
+  )
+}
+{
+  as === "p" && (
+    <p class={`${styles} ${className}`}>
+      <slot />
+    </p>
+  )
+}
+{
+  as === "span" && (
+    <span class={`${styles} ${className}`}>
+      <slot />
+    </span>
+  )
+}
+{
+  as === "time" && (
+    <time class={`${styles} ${className}`}>
+      <slot />
+    </time>
+  )
+}
