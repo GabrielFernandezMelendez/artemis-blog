@@ -13,10 +13,10 @@ const { preheader, title, description } = Astro.props;
 
 <section class="px-5 sm:px-64 py-64 flex flex-col gap-2">
   <SectionLabel text={preheader} />
-  <Text as="h1" variant="hero-title">
+  <Text as="h1" variant="h1" class="max-w-[320px] sm:max-w-none sm:text-display">
     {title}
   </Text>
-  <Text as="p" variant="hero-description">
+  <Text as="p" variant="caption" class="sm:text-h3 sm:font-bold">
     {description}
   </Text>
 </section>
