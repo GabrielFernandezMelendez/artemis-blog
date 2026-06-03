@@ -1,4 +1,6 @@
 ---
+import Text from "./Text.astro";
+
 interface Props {
   text: string;
 }
@@ -6,6 +8,4 @@ interface Props {
 const { text } = Astro.props;
 ---
 
-<span class="text-warm text-label font font-semibold tracking-widest uppercase">
-  {text}
-</span>
+<Text as="span" variant="label" class="text-warm">{text}</Text>
