@@ -12,26 +12,25 @@
   --color-warm: #d4b262;
 
   /* Spacing */
-  --spacing-4: 4px;
-  --spacing-8: 8px;
-  --spacing-12: 12px;
-  --spacing-16: 16px;
-  --spacing-24: 24px;
-  --spacing-32: 32px;
-  --spacing-48: 48px;
-  --spacing-64: 64px;
-  --spacing-96: 96px;
+  --spacing-4: 0.25rem; /* 4px */
+  --spacing-8: 0.5rem; /* 8px */
+  --spacing-12: 0.75rem; /* 12px */
+  --spacing-16: 1rem; /* 16px */
+  --spacing-24: 1.5rem; /* 24px */
+  --spacing-32: 2rem; /* 32px */
+  --spacing-48: 3rem; /* 48px */
+  --spacing-64: 4rem; /* 64px */
+  --spacing-96: 6rem; /* 96px */
 
   /* Typography */
-
-  --text-display: 96px;
-  --text-h1: 64px;
-  --text-h2: 40px;
-  --text-h3: 24px;
-  --text-body-lg: 20px;
-  --text-body: 16px;
-  --text-caption: 13px;
-  --text-label: 12px;
+  --text-display: 6rem; /* 96px */
+  --text-h1: 4rem; /* 64px */
+  --text-h2: 2.5rem; /* 40px */
+  --text-h3: 1.5rem; /* 24px */
+  --text-body-lg: 1.25rem; /* 20px */
+  --text-body: 1rem; /* 16px */
+  --text-caption: 0.8125rem; /* 13px */
+  --text-label: 0.75rem; /* 12px */
 
   /* Font weight */
   --font-weight-regular: 400;
