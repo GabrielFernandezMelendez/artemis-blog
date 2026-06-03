@@ -32,14 +32,14 @@ const relatedPosts = tagPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
 >
   <Header />
   <!-- aqui muy probablemente tiene estilos fijos que hay que cambiar -->
-  <article class="container max-w-4xl mx-auto px-6 py-24 flex gap-6">
-    <a
-      href="/"
-      class="text-text-secondary font-semibold sm:font-regular text-label tracking-widest hover:text-text-primary uppercase sm:normal-case"
-    >
-      ← Back to stories
-    </a>
-  </article>
+<nav class="container max-w-4xl mx-auto px-6 py-24 flex gap-6">
+  
+     <a href="/"
+    class="text-text-secondary font-semibold sm:font-regular text-label tracking-widest hover:text-text-primary uppercase sm:normal-case"
+  >
+    ← Back to stories
+  </a>
+</nav>
 
   <main class="flex-1">
     <div class="relative w-full h-[60vh] overflow-hidden">
@@ -71,11 +71,9 @@ const relatedPosts = tagPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
         <Fragment set:html={post.content} />
       </div>
     </article>
-    <article
-      class="max-w-4xl mx-auto lg:max-w-none lg:mx-0 py-12 flex flex-col gap-6"
-    >
-      <RelatedStories posts={relatedPosts} />
-    </article>
-    <Footer />
+
+    <RelatedStories posts={relatedPosts} />
   </main>
+
+  <Footer />
 </BaseLayout>

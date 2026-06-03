@@ -1,0 +1,31 @@
+---
+import type { Post } from "../../lib/types";
+import PostDate from "../atoms/PostDate.astro";
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+
+  <a href={`/posts/${post.slug}`}
+  aria-label={`Leer artículo: ${post.title}`}
+  class="group relative block overflow-hidden w-full aspect-video no-underline focus-visible:ring-2 focus-visible:ring-accent"
+>
+  <img
+    src={post.coverImage.src}
+    alt={post.coverImage.alt}
+    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+  />
+
+  <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+
+  <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-16 ">
+    <PostDate date={post.publishedAt} />
+    <h2 class="text-text-primary text-body-lg y font-regular leading-tight line-clamp-1 ">
+      {post.title}
+    </h2>
+  </div>
+</a>
