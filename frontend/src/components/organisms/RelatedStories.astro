@@ -1,6 +1,6 @@
 ---
 import type { Post } from "../../lib/types";
-import DetailCard from "../molecules/DetailCard.astro";
+import PostCard from "../molecules/PostCard.astro";
 import SectionLabel from "../atoms/SectionLabel.astro";
 
 interface Props {
@@ -18,13 +18,13 @@ const { posts } = Astro.props;
     </h2>
   </div>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-  {
-    posts.map((post) => (
-      <div>
-        <DetailCard post={post} />
-      </div>
-    ))
-  }
-</div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {
+      posts.map((post) => (
+        <div>
+          <PostCard post={post} variant="detail" />
+        </div>
+      ))
+    }
+  </div>
 </section>
