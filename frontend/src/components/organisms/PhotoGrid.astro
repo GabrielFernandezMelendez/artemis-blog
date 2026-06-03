@@ -11,7 +11,7 @@ const { posts } = Astro.props;
 const [featuredPost, ...remainingPosts] = posts;
 ---
 
-<section class="grid w-full grid-cols-1 md:grid-cols-3 gap-1 overflow-hidden [auto-rows:60vw] md:[auto-rows:calc(100vw/3)]">
+<section class="grid  grid-cols-1 md:grid-cols-3 [auto-rows:60vw] md:[auto-rows:calc(100vw/3)]">
 
   <div class="md:col-span-2 md:row-span-2 h-full min-h-0">
     <PostCard post={featuredPost} />
