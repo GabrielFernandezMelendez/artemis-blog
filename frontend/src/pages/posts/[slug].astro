@@ -4,6 +4,7 @@ import Header from "../../components/organisms/Header.astro";
 import Footer from "../../components/organisms/Footer.astro";
 import RelatedStories from "../../components/organisms/RelatedStories.astro";
 import PostMeta from "../../components/atoms/PostMeta.astro";
+import Text from "../../components/atoms/Text.astro";
 import { getPostBySlug, getPosts, getPostsByTag } from "../../lib/api";
 
 export async function getStaticPaths() {
@@ -31,43 +32,45 @@ const relatedPosts = tagPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
   image={post.coverImage.src}
 >
   <Header />
-  <!-- aqui muy probablemente tiene estilos fijos que hay que cambiar -->
-<nav class="container max-w-4xl mx-auto px-6 py-24 flex gap-6">
-  
-     <a href="/"
-    class="text-text-secondary font-semibold sm:font-regular text-label tracking-widest hover:text-text-primary uppercase sm:normal-case"
-  >
-    ← Back to stories
-  </a>
-</nav>
+
+  <!-- Navegación de vuelta al listado -->
+  <nav class="container max-w-4xl mx-auto px-6 py-24 flex gap-6">
+    
+      <a href="/"
+      class="text-text-secondary font-semibold sm:font-regular text-label tracking-widest hover:text-text-primary uppercase sm:normal-case"
+    >
+      ← Back to stories
+    </a>
+  </nav>
 
   <main class="flex-1">
+    <!-- Imagen de cabecera del post -->
     <div class="relative w-full h-[60vh] overflow-hidden">
       <img
         src={post.coverImage.src}
         alt={post.coverImage.alt}
         class="absolute inset-0 w-full h-full object-cover"
       />
-      <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent">
-      </div>
+      <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
     </div>
 
     <article class="max-w-4xl mx-auto px-6 py-12 flex flex-col gap-6">
-      <h1 class="text-text-primary text-h2 sm:text-h1 font-bold leading-tight">
-        {post.title}
-      </h1>
 
+      <!-- Título principal del post -->
+      <Text as="h1" variant="h1" class="text-h2 sm:text-h1">
+        {post.title}
+      </Text>
+
+      <!-- Fecha y tiempo de lectura -->
       <PostMeta date={post.publishedAt} readingTime={post.readingTime} />
 
-      <p
-        class="text-text-primary font-regular text-body-lg sm:text-h3 sm:font-bold leading-relaxed"
-      >
+      <!-- Extracto del post -->
+      <Text as="p" variant="body-lg" class="sm:text-h3 sm:font-bold">
         {post.excerpt}
-      </p>
+      </Text>
 
-      <div
-        class="prose prose-invert prose-lg max-w-none prose-headings:text-text-primary prose-headings:font-bold prose-p:text-text-primary prose-p:leading-relaxed prose-a:text-accent"
-      >
+      <!-- Contenido del post -->
+      <div class="prose prose-invert prose-lg max-w-none prose-headings:text-text-primary prose-headings:font-bold prose-p:text-text-primary prose-p:leading-relaxed prose-a:text-accent">
         <Fragment set:html={post.content} />
       </div>
     </article>
