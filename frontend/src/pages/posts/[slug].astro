@@ -33,9 +33,9 @@ const relatedPosts = tagPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
 >
   <Header />
 
-  <!-- Navegación de vuelta al listado (incluida la aria-label para temas de accesibilidad)-->
+  <!-- Navegación de vuelta al listado -->
   <nav aria-label="Volver al listado" class="container max-w-4xl mx-auto px-6 py-24 flex gap-6">
-    <a
+    
       href="/"
       class="text-text-secondary font-semibold sm:font-regular text-label tracking-widest hover:text-text-primary uppercase sm:normal-case"
     >
@@ -49,6 +49,10 @@ const relatedPosts = tagPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
       <img
         src={post.coverImage.src}
         alt={post.coverImage.alt}
+        width="1200"
+        height="630"
+        loading="eager"
+        fetchpriority="high"
         class="absolute inset-0 w-full h-full object-cover"
       />
       <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent">

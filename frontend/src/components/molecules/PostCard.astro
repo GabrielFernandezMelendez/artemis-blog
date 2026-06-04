@@ -8,7 +8,7 @@ interface Props {
   post: Post;
   variant?: "grid" | "detail";
 }
-//<!-- adaptamos el componente para que tenga ambos comportamientos y no se separe en dos moleculas diferentes -->
+// adaptamos el componente para que tenga ambos comportamientos y no se separe en dos moleculas diferentes
 const { post, variant = "grid" } = Astro.props;
 ---
 
@@ -17,12 +17,12 @@ const { post, variant = "grid" } = Astro.props;
   <a href={`/posts/${post.slug}`} aria-label={`Leer artículo: ${post.title}`} class="group relative block overflow-hidden bg-surface h-full no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
 
     <!-- Título visible solo al navegar con teclado, oculto en hover -->
-<Text as="span" variant="body" aria-hidden="true" class="absolute bottom-0 left-0 right-0 p-4 bg-black/90 font-bold text-center z-10 opacity-0 translate-y-full transition-all duration-200 group-focus-visible:opacity-100 group-focus-visible:translate-y-0 group-hover:opacity-0! group-hover:translate-y-full!">
+    <Text as="span" variant="body" aria-hidden="true" class="absolute bottom-0 left-0 right-0 p-4 bg-black/90 font-bold text-center z-10 opacity-0 translate-y-full transition-all duration-200 group-focus-visible:opacity-100 group-focus-visible:translate-y-0 group-hover:opacity-0! group-hover:translate-y-full!">
       {post.title}
     </Text>
 
     <!-- Imagen de portada con efecto zoom en hover -->
-    <img src={post.coverImage.src} alt={post.coverImage.alt} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+    <img src={post.coverImage.src} alt={post.coverImage.alt} width="800" height="600" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
 
     <!-- Gradiente que aparece al hacer hover -->
     <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -31,7 +31,7 @@ const { post, variant = "grid" } = Astro.props;
     <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-2 translate-y-0 opacity-100 sm:translate-y-4 sm:opacity-0 sm:group-hover:translate-y-0! sm:group-hover:opacity-100! group-focus-visible:opacity-0 transition-all duration-300">
       <PostDate date={post.publishedAt} />
       <Text as="h2" variant="h3" class="font-bold leading-tight">{post.title}</Text>
-      <Text as="p" variant="label" class="  mt-1 line-clamp-1">{post.excerpt}</Text>
+      <Text as="p" variant="label" class="mt-1 line-clamp-1">{post.excerpt}</Text>
       <ReadMoreLink />
     </div>
   </a>
@@ -40,7 +40,7 @@ const { post, variant = "grid" } = Astro.props;
   <a href={`/posts/${post.slug}`} aria-label={`Leer artículo: ${post.title}`} class="group relative block overflow-hidden aspect-video no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
 
     <!-- Imagen de portada sin efecto hover -->
-    <img src={post.coverImage.src} alt={post.coverImage.alt} class="w-full h-full object-cover transition-transform duration-500" />
+    <img src={post.coverImage.src} alt={post.coverImage.alt} width="800" height="450" loading="lazy" class="w-full h-full object-cover transition-transform duration-500" />
 
     <!-- Gradiente siempre visible para legibilidad del texto -->
     <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
