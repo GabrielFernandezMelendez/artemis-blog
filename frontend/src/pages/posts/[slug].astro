@@ -35,8 +35,8 @@ const relatedPosts = tagPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   <!-- Navegación de vuelta al listado -->
   <nav class="container max-w-4xl mx-auto px-6 py-24 flex gap-6">
-    
-      <a href="/"
+    <a
+      href="/"
       class="text-text-secondary font-semibold sm:font-regular text-label tracking-widest hover:text-text-primary uppercase sm:normal-case"
     >
       ← Back to stories
@@ -45,17 +45,17 @@ const relatedPosts = tagPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   <main class="flex-1">
     <!-- Imagen de cabecera del post -->
-    <div class="relative w-full h-[60vh] overflow-hidden">
+    <div class="relative h-[60vh] overflow-hidden">
       <img
         src={post.coverImage.src}
         alt={post.coverImage.alt}
         class="absolute inset-0 w-full h-full object-cover"
       />
-      <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
+      <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent">
+      </div>
     </div>
 
     <article class="max-w-4xl mx-auto px-6 py-12 flex flex-col gap-6">
-
       <!-- Título principal del post -->
       <Text as="h1" variant="h1" class="text-h2 sm:text-h1">
         {post.title}
@@ -70,7 +70,9 @@ const relatedPosts = tagPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
       </Text>
 
       <!-- Contenido del post -->
-      <div class="prose prose-invert prose-lg max-w-none prose-headings:text-text-primary prose-headings:font-bold prose-p:text-text-primary prose-p:leading-relaxed prose-a:text-accent">
+      <div
+        class="prose prose-invert prose-lg max-w-none prose-headings:text-text-primary prose-headings:font-bold prose-p:text-text-primary prose-p:leading-relaxed prose-a:text-accent"
+      >
         <Fragment set:html={post.content} />
       </div>
     </article>

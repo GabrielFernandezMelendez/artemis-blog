@@ -14,10 +14,10 @@ const { post, variant = "grid" } = Astro.props;
 
 <!-- Tarjeta con overlay y comportamiento hover para la grid principal -->
 {variant === "grid" ? (
-  <a href={`/posts/${post.slug}`} aria-label={`Leer artículo: ${post.title}`} class="group relative block overflow-hidden bg-surface w-full h-full no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+  <a href={`/posts/${post.slug}`} aria-label={`Leer artículo: ${post.title}`} class="group relative block overflow-hidden bg-surface h-full no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
 
     <!-- Título visible solo al navegar con teclado, oculto en hover -->
-    <Text as="span" variant="body" class="absolute bottom-0 left-0 right-0 p-4 bg-black/90 font-bold text-center z-10 opacity-0 translate-y-full transition-all duration-200 group-focus-visible:opacity-100 group-focus-visible:translate-y-0 group-hover:!opacity-0 group-hover:!translate-y-full">
+    <Text as="span" variant="body" class="absolute bottom-0 left-0 right-0 p-4 bg-black/90 font-bold text-center z-10 opacity-0 translate-y-full transition-all duration-200 group-focus-visible:opacity-100 group-focus-visible:translate-y-0 group-hover:opacity-0! group-hover:translate-y-full!">
       {post.title}
     </Text>
 
@@ -28,7 +28,7 @@ const { post, variant = "grid" } = Astro.props;
     <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300"></div>
 
     <!-- Contenido del overlay: fecha, titulo, excerpt y enlace — visible en hover, oculto en foco -->
-    <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-2 translate-y-0 opacity-100 sm:translate-y-4 sm:opacity-0 sm:group-hover:!translate-y-0 sm:group-hover:!opacity-100 group-focus-visible:opacity-0 transition-all duration-300">
+    <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-2 translate-y-0 opacity-100 sm:translate-y-4 sm:opacity-0 sm:group-hover:translate-y-0! sm:group-hover:opacity-100! group-focus-visible:opacity-0 transition-all duration-300">
       <PostDate date={post.publishedAt} />
       <Text as="h2" variant="h3" class="font-bold leading-tight">{post.title}</Text>
       <Text as="p" variant="label" class="  mt-1 line-clamp-1">{post.excerpt}</Text>
@@ -37,7 +37,7 @@ const { post, variant = "grid" } = Astro.props;
   </a>
 ) : (
   <!-- Tarjeta editorial con overlay siempre visible para related stories -->
-  <a href={`/posts/${post.slug}`} aria-label={`Leer artículo: ${post.title}`} class="group relative block overflow-hidden w-full aspect-video no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+  <a href={`/posts/${post.slug}`} aria-label={`Leer artículo: ${post.title}`} class="group relative block overflow-hidden aspect-video no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
 
     <!-- Imagen de portada sin efecto hover -->
     <img src={post.coverImage.src} alt={post.coverImage.alt} class="w-full h-full object-cover transition-transform duration-500" />
