@@ -11,12 +11,12 @@ interface Props {
 const { posts } = Astro.props;
 ---
 
-<section class="p-6 py-16 border-t border-text-primary">
+<section aria-labelledby="related-title" class="p-6 py-16 border-t border-text-primary">
   <div class="flex pt-24 pb-12 flex-col gap-1 mb-8">
     <!-- Etiqueta de sección -->
     <SectionLabel text="Continue Reading" />
     <!-- Título de la sección -->
-    <Text as="h2" variant="h2" class="text-h3 sm:text-h2">
+    <Text as="h2" variant="h2" id="related-title" class="text-h3 sm:text-h2">
       Related stories
     </Text>
   </div>

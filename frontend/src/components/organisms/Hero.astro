@@ -11,13 +11,9 @@ interface Props {
 const { preheader, title, description } = Astro.props;
 ---
 
-<section class="px-5 sm:px-64 py-64 flex flex-col gap-2">
+<section aria-labelledby="hero-title" class="px-5 sm:px-64 py-64 flex flex-col gap-2">
   <SectionLabel text={preheader} />
-  <Text
-    as="h1"
-    variant="h1"
-    class="max-w-[320px] sm:max-w-none sm:text-display"
-  >
+  <Text as="h1" variant="h1" id="hero-title" class="max-w-[320px] sm:max-w-none sm:text-display">
     {title}
   </Text>
   <Text
