@@ -6,17 +6,21 @@ import Text from "../atoms/Text.astro";
 <footer class="px-5 sm:px-64 py-64 bg-surface flex items-center">
   <div class="flex flex-col gap-5">
     <!-- Nombre del blog -->
-    <Text as="span" variant="caption" class="text-text-primary font-bold">
+    <Text as="span" variant="caption" class="text-text-primary">
       {FOOTER.toprow}
     </Text>
 
     <!-- Copyright version mobile -->
-    <Text as="span" variant="label" class="sm:hidden">
+    <Text as="span" variant="label" class="sm:hidden text-text-secondary">
       {FOOTER.mobileCopyright}
     </Text>
 
     <!-- Copyright version desktop -->
-    <Text as="span" variant="label" class="hidden sm:inline">
+    <Text
+      as="span"
+      variant="label"
+      class="hidden sm:inline text-text-secondary"
+    >
       {FOOTER.copyright}
     </Text>
   </div>
