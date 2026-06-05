@@ -37,10 +37,18 @@ describe("api.ts", () => {
 
   it("getPostsByTag devuelve posts para un tag existente", async () => {
     const posts = await getPosts();
-    const tag = posts[0].tags;
+    const tag = posts[0].tags.split(",")[0].trim(); // un tag individual
     const result = await getPostsByTag(tag);
+
     expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBeGreaterThan(0);
-    expect(result[0].tags).toBe(tag);
+    expect(
+      result.every((post) =>
+        post.tags
+          .split(",")
+          .map((t) => t.trim().toLowerCase())
+          .includes(tag.toLowerCase()),
+      ),
+    ).toBe(true);
   });
 });
