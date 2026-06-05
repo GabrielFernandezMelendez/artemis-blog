@@ -1,4 +1,6 @@
 ---
+import { twMerge } from "tailwind-merge";
+
 interface Props {
   as: "h1" | "h2" | "h3" | "p" | "span" | "time";
   variant:
@@ -22,51 +24,51 @@ const variantStyles: Record<string, string> = {
   h3: "text-h3 font-bold leading-tight text-text-primary",
   "body-lg": "text-body-lg font-regular leading-relaxed text-text-primary",
   body: "text-body font-regular leading-relaxed text-text-primary",
-  caption: "text-caption font-bold ",
-  label: "text-label font-semibold tracking-widest ",
+  caption: "text-caption font-bold",
+  label: "text-label font-semibold tracking-widest",
 };
 
-const styles = variantStyles[variant];
+const styles = twMerge(variantStyles[variant], className);
 ---
 
 {
   as === "h1" && (
-    <h1 class={`${styles} ${className}`}>
+    <h1 class={styles}>
       <slot />
     </h1>
   )
 }
 {
   as === "h2" && (
-    <h2 class={`${styles} ${className}`}>
+    <h2 class={styles}>
       <slot />
     </h2>
   )
 }
 {
   as === "h3" && (
-    <h3 class={`${styles} ${className}`}>
+    <h3 class={styles}>
       <slot />
     </h3>
   )
 }
 {
   as === "p" && (
-    <p class={`${styles} ${className}`}>
+    <p class={styles}>
       <slot />
     </p>
   )
 }
 {
   as === "span" && (
-    <span class={`${styles} ${className}`}>
+    <span class={styles}>
       <slot />
     </span>
   )
 }
 {
   as === "time" && (
-    <time class={`${styles} ${className}`}>
+    <time class={styles}>
       <slot />
     </time>
   )
