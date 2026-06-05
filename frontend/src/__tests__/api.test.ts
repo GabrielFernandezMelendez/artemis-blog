@@ -1,5 +1,6 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect ,vi} from "vitest";
 import { getPosts, getPostBySlug, getPostsByTag } from "../lib/api";
+
 
 describe("api.ts", () => {
   it("getPosts devuelve un arreglo de posts", async () => {
@@ -51,4 +52,19 @@ describe("api.ts", () => {
       ),
     ).toBe(true);
   });
+
+  it("getPostsByTag devuelve array vacío para un tag inexistente", async () => {
+  const result = await getPostsByTag("tag-que-no-existe");
+  expect(Array.isArray(result)).toBe(true);
+  expect(result).toHaveLength(0);
+});
+
+it("getPosts lanza un error si el servidor falla", async () => {
+  const originalFetch = global.fetch;
+  global.fetch = vi.fn().mockResolvedValue({ ok: false, status: 500 });
+  
+  await expect(getPosts()).rejects.toThrow("Error fetching posts: 500");
+  
+  global.fetch = originalFetch;
+});
 });
