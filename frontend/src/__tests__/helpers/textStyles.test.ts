@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { variantStyles, resolveTextStyles } from "../lib/textStyles";
+import { variantStyles, resolveTextStyles } from "../../lib/textStyles";
 
 describe("textStyles", () => {
   it("variant h1 devuelve las clases correctas", () => {

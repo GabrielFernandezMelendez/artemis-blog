@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { formatDate } from "../lib/formatDate";
+import { formatDate } from "../../lib/formatDate";
 
 describe("formatDate", () => {
   it("format short devuelve la fecha en formato corto", () => {
