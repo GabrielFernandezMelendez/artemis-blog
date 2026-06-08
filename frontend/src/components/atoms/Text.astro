@@ -15,18 +15,19 @@ interface Props {
 
 const { as, variant, class: className = "" } = Astro.props;
 
-const variantStyles: Record<string, string> = {
-  display: "text-display font-bold leading-tight text-text-primary",
-  h1: "text-h1 font-bold leading-tight text-text-primary",
-  h2: "text-h2 font-bold leading-tight text-text-primary",
-  h3: "text-h3 font-bold leading-tight text-text-primary",
-  "body-lg": "text-body-lg font-regular leading-relaxed text-text-primary",
-  body: "text-body font-regular leading-relaxed text-text-primary",
+const variantStyles: Record<Props["variant"], string> = {
+  display: "text-display font-bold leading-tight",      
+  h1: "text-h1 font-bold leading-tight",
+  h2: "text-h2 font-bold leading-tight",
+  h3: "text-h3 font-bold leading-tight",
+  "body-lg": "text-body-lg font-regular leading-relaxed",
+  body: "text-body font-regular leading-relaxed",
   caption: "text-caption font-regular",
   label: "text-label font-semibold",
 };
 
-const styles = variantStyles[variant];
+const styles = variantStyles[variant as Props["variant"]] ?? "";
+
 ---
 
 {
