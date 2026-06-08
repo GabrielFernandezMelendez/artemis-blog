@@ -1,4 +1,6 @@
 ---
+import { variantStyles, resolveTextStyles } from "../../lib/textStyles";
+
 interface Props {
   as: "h1" | "h2" | "h3" | "p" | "span" | "time";
   variant:
@@ -14,61 +16,12 @@ interface Props {
 }
 
 const { as, variant, class: className = "" } = Astro.props;
-
-const variantStyles: Record<Props["variant"], string> = {
-  display: "text-display font-bold leading-tight",      
-  h1: "text-h1 font-bold leading-tight",
-  h2: "text-h2 font-bold leading-tight",
-  h3: "text-h3 font-bold leading-tight",
-  "body-lg": "text-body-lg font-regular leading-relaxed",
-  body: "text-body font-regular leading-relaxed",
-  caption: "text-caption font-regular",
-  label: "text-label font-semibold",
-};
-
-const styles = variantStyles[variant as Props["variant"]] ?? "";
-
+const styles = resolveTextStyles(variant, className);
 ---
 
-{
-  as === "h1" && (
-    <h1 class={`${styles} ${className}`}>
-      <slot />
-    </h1>
-  )
-}
-{
-  as === "h2" && (
-    <h2 class={`${styles} ${className}`}>
-      <slot />
-    </h2>
-  )
-}
-{
-  as === "h3" && (
-    <h3 class={`${styles} ${className}`}>
-      <slot />
-    </h3>
-  )
-}
-{
-  as === "p" && (
-    <p class={`${styles} ${className}`}>
-      <slot />
-    </p>
-  )
-}
-{
-  as === "span" && (
-    <span class={`${styles} ${className}`}>
-      <slot />
-    </span>
-  )
-}
-{
-  as === "time" && (
-    <time class={`${styles} ${className}`}>
-      <slot />
-    </time>
-  )
-}
+{as === "h1" && <h1 class={styles}><slot /></h1>}
+{as === "h2" && <h2 class={styles}><slot /></h2>}
+{as === "h3" && <h3 class={styles}><slot /></h3>}
+{as === "p" && <p class={styles}><slot /></p>}
+{as === "span" && <span class={styles}><slot /></span>}
+{as === "time" && <time class={styles}><slot /></time>}
