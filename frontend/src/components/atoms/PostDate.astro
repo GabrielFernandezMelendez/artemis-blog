@@ -1,17 +1,14 @@
 ---
+import { formatDate } from "../../lib/formatDate";
+
 interface Props {
   date: string;
-  //format permite que utilicemos esto en formatos diferentes pero que lo mantengamos como  un solo atomo, importante!
   format?: "short" | "long";
 }
 
 const { date, format = "short" } = Astro.props;
 
-const formatted = new Date(date).toLocaleDateString("en-US", {
-  month: format === "long" ? "long" : "short",
-  day: "numeric",
-  year: "numeric",
-}).toUpperCase();
+const formatted = formatDate(date, format);
 ---
 
 <time datetime={date} class="text-text-secondary font-semibold text-label tracking-widest uppercase">
