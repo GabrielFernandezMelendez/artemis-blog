@@ -3,18 +3,22 @@ import type { Post } from "../../lib/types";
 import PostDate from "../atoms/PostDate.astro";
 import ReadMoreLink from "../atoms/ReadMoreLink.astro";
 import Text from "../atoms/Text.astro";
+import { buildPostUrl, buildAriaLabel, resolveVariant } from "../../lib/postCard";
 
 interface Props {
   post: Post;
   variant?: "grid" | "detail";
 }
 // adaptamos el componente para que tenga ambos comportamientos y no se separe en dos moleculas diferentes
-const { post, variant = "grid" } = Astro.props;
+const { post, variant } = Astro.props;
+const resolvedVariant = resolveVariant(variant);
+const postUrl = buildPostUrl(post.slug);
+const ariaLabel = buildAriaLabel(post.title);
 ---
 
 <!-- Tarjeta con overlay y comportamiento hover para la grid principal -->
-{variant === "grid" ? (
-  <a href={`/posts/${post.slug}`} aria-label={`Leer artículo: ${post.title}`} class="group relative block overflow-hidden bg-surface h-full no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+{resolvedVariant === "grid" ? (
+  <a href={postUrl} aria-label={ariaLabel} class="group relative block overflow-hidden bg-surface h-full no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
 
     <!-- Título visible solo al navegar con teclado, oculto en hover -->
     <Text as="span" variant="body" aria-hidden="true" class="absolute bottom-0 left-0 right-0 p-4 bg-black/90 font-bold text-center z-10 opacity-0 translate-y-full transition-all duration-200 group-focus-visible:opacity-100 group-focus-visible:translate-y-0 group-hover:opacity-0! group-hover:translate-y-full!">
@@ -37,7 +41,7 @@ const { post, variant = "grid" } = Astro.props;
   </a>
 ) : (
   <!-- Tarjeta editorial con overlay siempre visible para related stories -->
-  <a href={`/posts/${post.slug}`} aria-label={`Leer artículo: ${post.title}`} class="group relative block overflow-hidden aspect-video no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+  <a href={postUrl} aria-label={ariaLabel} class="group relative block overflow-hidden aspect-video no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
 
     <!-- Imagen de portada sin efecto hover -->
     <img src={post.coverImage.src} alt={post.coverImage.alt} width="800" height="450" loading="lazy" class="w-full h-full object-cover transition-transform duration-500" />
