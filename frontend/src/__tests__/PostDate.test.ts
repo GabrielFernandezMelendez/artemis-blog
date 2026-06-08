@@ -28,4 +28,9 @@ describe("formatDate", () => {
     const result = formatDate("fecha-invalida", "short");
     expect(result).toBe("INVALID DATE");
   });
+
+  it("usa formato short por defecto cuando no se especifica", () => {
+  const result = formatDate("2026-04-01");
+  expect(result).toBe("APR 1, 2026");
+});
 });
