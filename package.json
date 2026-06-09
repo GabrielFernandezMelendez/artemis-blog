@@ -18,6 +18,11 @@
     "preview": "pnpm -r --parallel build && pnpm -r --parallel preview",
     "preview:front": "pnpm --dir frontend preview",
     "preview:api": "pnpm --dir backend start",
-    "test:front": "pnpm --dir frontend test"
+    "test:front": "pnpm --dir frontend test",
+    "prepare": "husky",
+    "check:front": "pnpm --dir frontend lint && pnpm --dir frontend format:check"
+  },
+  "devDependencies": {
+    "husky": "9.1.7"
   }
 }
