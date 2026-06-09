@@ -1,1 +1,51 @@
 @import 'tailwindcss';
+
+@theme {
+  /* Colors */
+  --color-background-black: #000000;
+  --color-surface-dark: #0a0a0c;
+  --color-surface-elevated: #14141a;
+  --color-text-primary: #f5f5f7;
+  --color-text-secondary: #8b8b96;
+  --color-accent-artemis-blue: #2a6ff2;
+  --color-accent-lunar-gold: #d4b262;
+
+  /* Spacing */
+  --spacing-4: 0.25rem;
+  --spacing-8: 0.5rem;
+  --spacing-12: 0.75rem;
+  --spacing-16: 1rem;
+  --spacing-24: 1.5rem;
+  --spacing-32: 2rem;
+  --spacing-48: 3rem;
+  --spacing-64: 4rem;
+  --spacing-96: 6rem;
+
+  /* Texts */
+  --text-display: 6rem;
+  --text-display--font-weight: 700;
+  --text-display--letter-spacing: -0.03em;
+
+  --text-heading-1: 4rem;
+  --text-heading-1--font-weight: 700;
+  --text-heading-1--letter-spacing: -0.02em;
+
+  --text-heading-2: 2.5rem;
+  --text-heading-2--font-weight: 700;
+  --text-heading-2--letter-spacing: -0.01em;
+
+  --text-heading-3: 1.5rem;
+  --text-heading-3--font-weight: 700;
+
+  --text-body-large: 1.25rem;
+  --text-body-large--font-weight: 400;
+
+  --text-body: 1rem;
+  --text-body--font-weight: 400;
+
+  --text-caption: 0.8125rem;
+  --text-caption--font-weight: 400;
+
+  --text-label: 0.75rem;
+  --text-label--font-weight: 400;
+}
