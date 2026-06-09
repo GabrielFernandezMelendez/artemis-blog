@@ -17,6 +17,7 @@
     "start:api": "pnpm --dir backend start",
     "preview": "pnpm -r --parallel build && pnpm -r --parallel preview",
     "preview:front": "pnpm --dir frontend preview",
-    "preview:api": "pnpm --dir backend start"
+    "preview:api": "pnpm --dir backend start",
+    "test:front": "pnpm --dir frontend test"
   }
 }

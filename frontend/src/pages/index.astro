@@ -1,5 +1,6 @@
 ---
 import "@/ui/styles/global.css";
+import Home from "@/ui/views/home/home.astro";
 ---
 
 <html lang="en">
@@ -11,9 +12,7 @@ import "@/ui/styles/global.css";
     <meta name="generator" content={Astro.generator} />
     <title>The Artemis diary</title>
   </head>
-  <body
-    class="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center"
-  >
-    <h1 class="text-3xl font-bold tracking-tight">Hello Moon!</h1>
+  <body>
+    <Home />
   </body>
 </html>
