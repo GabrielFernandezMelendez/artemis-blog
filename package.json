@@ -10,9 +10,13 @@
     "dev": "pnpm -r --parallel dev",
     "dev:front": "pnpm --dir frontend dev",
     "dev:api": "pnpm --dir backend dev",
-    "build": "pnpm --dir backend build",
+    "build": "pnpm -r --parallel build",
+    "build:front": "pnpm --dir frontend build",
     "build:api": "pnpm --dir backend build",
-    "start": "pnpm --dir backend start",
-    "preview": "pnpm build:api && pnpm --dir backend start"
+    "start": "pnpm -r --parallel start",
+    "start:api": "pnpm --dir backend start",
+    "preview": "pnpm -r --parallel build && pnpm -r --parallel preview",
+    "preview:front": "pnpm --dir frontend preview",
+    "preview:api": "pnpm --dir backend start"
   }
 }

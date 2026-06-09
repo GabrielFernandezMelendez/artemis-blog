@@ -1,11 +1,21 @@
 {
   "name": "artemis-blog-frontend",
-  "private": true,
+  "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "scripts": {
-    "dev": "serve . -l 4321"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "6.4.4"
   },
   "devDependencies": {
-    "serve": "14.2.4"
+    "@tailwindcss/vite": "4.3.0",
+    "tailwindcss": "4.3.0"
   }
 }
