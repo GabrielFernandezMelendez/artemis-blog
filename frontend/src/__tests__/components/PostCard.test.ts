@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { buildPostUrl, buildAriaLabel, resolveVariant } from "../../lib/postCard";
+import {
+  buildPostUrl,
+  buildAriaLabel,
+  resolveVariant,
+} from "../../lib/postCard";
 
 describe("postCard utils", () => {
   it("construye la URL correcta a partir del slug", () => {

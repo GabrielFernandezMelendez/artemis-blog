@@ -27,7 +27,9 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 }
 
 export async function getPostsByTag(tag: string): Promise<Post[]> {
-  const response = await fetch(`${API_URL}/posts?tag=${encodeURIComponent(tag)}`);
+  const response = await fetch(
+    `${API_URL}/posts?tag=${encodeURIComponent(tag)}`,
+  );
 
   if (!response.ok) {
     throw new Error(`Error fetching posts by tag: ${response.status}`);
