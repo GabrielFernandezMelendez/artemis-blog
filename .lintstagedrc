@@ -1,0 +1,7 @@
+{
+  "*.{astro,js,ts}": [
+    "pnpm -F frontend exec eslint --fix",
+    "pnpm -F frontend exec prettier --write"
+  ],
+  "*.{json,md,css,scss,yml,yaml}": ["pnpm -F frontend exec prettier --write"]
+}

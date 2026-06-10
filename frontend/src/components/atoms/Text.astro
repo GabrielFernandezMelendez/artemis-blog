@@ -1,5 +1,5 @@
 ---
-import { variantStyles, resolveTextStyles } from "../../lib/textStyles";
+import { resolveTextStyles } from "../../lib/textStyles";
 
 interface Props {
   as: "h1" | "h2" | "h3" | "p" | "span" | "time";
@@ -19,9 +19,45 @@ const { as, variant, class: className = "" } = Astro.props;
 const styles = resolveTextStyles(variant, className);
 ---
 
-{as === "h1" && <h1 class={styles}><slot /></h1>}
-{as === "h2" && <h2 class={styles}><slot /></h2>}
-{as === "h3" && <h3 class={styles}><slot /></h3>}
-{as === "p" && <p class={styles}><slot /></p>}
-{as === "span" && <span class={styles}><slot /></span>}
-{as === "time" && <time class={styles}><slot /></time>}
+{
+  as === "h1" && (
+    <h1 class={styles}>
+      <slot />
+    </h1>
+  )
+}
+{
+  as === "h2" && (
+    <h2 class={styles}>
+      <slot />
+    </h2>
+  )
+}
+{
+  as === "h3" && (
+    <h3 class={styles}>
+      <slot />
+    </h3>
+  )
+}
+{
+  as === "p" && (
+    <p class={styles}>
+      <slot />
+    </p>
+  )
+}
+{
+  as === "span" && (
+    <span class={styles}>
+      <slot />
+    </span>
+  )
+}
+{
+  as === "time" && (
+    <time class={styles}>
+      <slot />
+    </time>
+  )
+}

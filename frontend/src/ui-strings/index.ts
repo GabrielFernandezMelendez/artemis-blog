@@ -1,2 +1,2 @@
-export * from './hero';
-export * from './footer';
+export * from "./hero";
+export * from "./footer";
