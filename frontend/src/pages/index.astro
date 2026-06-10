@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Header from "../components/organisms/Header.astro";
-import Footer from "../components/organisms/Footer.astro";
+import Header from "../components/organisms/Header/Header.astro";
+import Footer from "../components/organisms/Footer/Footer.astro";
 import PhotoGrid from "../components/organisms/PhotoGrid.astro";
 import Hero from "../components/organisms/Hero.astro";
 import { HERO } from "../ui-strings";
@@ -14,11 +14,7 @@ const posts = await getPosts();
   <Header />
 
   <main class="flex-1">
-    <Hero
-      preheader={HERO.preheader}
-      title={HERO.title}
-      description={HERO.description}
-    />
+    <Hero preheader={HERO.preheader} title={HERO.title} description={HERO.description} />
 
     <PhotoGrid posts={posts} />
   </main>
