@@ -1,5 +1,5 @@
 ---
-import PostDate from "./PostDate.astro";
+import PostDate from "./PostDate/PostDate.astro";
 import Text from "./Text.astro";
 
 interface Props {
@@ -14,9 +14,7 @@ const { date, readingTime } = Astro.props;
   <!-- Fecha del post en formato largo -->
   <PostDate date={date} format="long" />
   <!-- Separador visible solo en desktop -->
-  <Text as="span" variant="label" class="hidden sm:inline" aria-hidden="true"
-    >·</Text
-  >
+  <Text as="span" variant="label" class="hidden sm:inline" aria-hidden="true">·</Text>
   <!-- Tiempo de lectura estimado -->
   <Text as="span" variant="label" aria-label={`${readingTime} minutos de lectura`} class="text-text-secondary uppercase">{readingTime} min read</Text>
 </div>

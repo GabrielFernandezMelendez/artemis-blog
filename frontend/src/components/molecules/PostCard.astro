@@ -1,6 +1,6 @@
 ---
 import type { Post } from "../../lib/types";
-import PostDate from "../atoms/PostDate.astro";
+import PostDate from "../atoms/PostDate/PostDate.astro";
 import ReadMoreLink from "../atoms/ReadMoreLink.astro";
 import Text from "../atoms/Text.astro";
 import { buildPostUrl, buildAriaLabel, resolveVariant } from "../../lib/postCard";
@@ -16,43 +16,55 @@ const postUrl = buildPostUrl(post.slug);
 const ariaLabel = buildAriaLabel(post.title);
 ---
 
-<!-- Tarjeta con overlay y comportamiento hover para la grid principal -->
-{resolvedVariant === "grid" ? (
-  <a href={postUrl} aria-label={ariaLabel} class="group relative block overflow-hidden bg-surface h-full no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+<!-- Tarjeta con overlay y comportamiento hover para la grid principal -->{
+  resolvedVariant === "grid" ? (
+    <a href={postUrl} aria-label={ariaLabel} class="group relative block overflow-hidden bg-surface h-full no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+      {/* Título visible solo al navegar con teclado, oculto en hover */}
+      <Text
+        as="span"
+        variant="body"
+        aria-hidden="true"
+        class="absolute bottom-0 left-0 right-0 p-4 bg-black/90 font-bold text-center z-10 opacity-0 translate-y-full transition-all duration-200 group-focus-visible:opacity-100 group-focus-visible:translate-y-0 group-hover:opacity-0! group-hover:translate-y-full!"
+      >
+        {post.title}
+      </Text>
 
-    <!-- Título visible solo al navegar con teclado, oculto en hover -->
-    <Text as="span" variant="body" aria-hidden="true" class="absolute bottom-0 left-0 right-0 p-4 bg-black/90 font-bold text-center z-10 opacity-0 translate-y-full transition-all duration-200 group-focus-visible:opacity-100 group-focus-visible:translate-y-0 group-hover:opacity-0! group-hover:translate-y-full!">
-      {post.title}
-    </Text>
+      {/* Imagen de portada con efecto zoom en hover */}
+      <img src={post.coverImage.src} alt={post.coverImage.alt} width="800" height="600" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
 
-    <!-- Imagen de portada con efecto zoom en hover -->
-    <img src={post.coverImage.src} alt={post.coverImage.alt} width="800" height="600" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+      {/* Gradiente que aparece al hacer hover */}
+      <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300" />
 
-    <!-- Gradiente que aparece al hacer hover -->
-    <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300"></div>
+      {/* Contenido del overlay: fecha, titulo, excerpt y enlace — visible en hover, oculto en foco */}
+      <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-2 translate-y-0 opacity-100 sm:translate-y-4 sm:opacity-0 sm:group-hover:translate-y-0! sm:group-hover:opacity-100! group-focus-visible:opacity-0 transition-all duration-300">
+        <PostDate date={post.publishedAt} />
+        <Text as="h2" variant="h3" class="text-text-primary">
+          {post.title}
+        </Text>
+        <Text as="p" variant="caption" class="text-text-primary mt-1 line-clamp-1">
+          {post.excerpt}
+        </Text>
+        <ReadMoreLink />
+      </div>
+    </a>
+  ) : (
+    <>
+      {/* Tarjeta editorial con overlay siempre visible para related stories */}
+      <a href={postUrl} aria-label={ariaLabel} class="group relative block overflow-hidden aspect-video no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+        {/* Imagen de portada sin efecto hover */}
+        <img src={post.coverImage.src} alt={post.coverImage.alt} width="800" height="450" loading="lazy" class="w-full h-full object-cover transition-transform duration-500" />
 
-    <!-- Contenido del overlay: fecha, titulo, excerpt y enlace — visible en hover, oculto en foco -->
-    <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-2 translate-y-0 opacity-100 sm:translate-y-4 sm:opacity-0 sm:group-hover:translate-y-0! sm:group-hover:opacity-100! group-focus-visible:opacity-0 transition-all duration-300">
-      <PostDate date={post.publishedAt} />
-      <Text as="h2" variant="h3" class="text-text-primary">{post.title}</Text>
-      <Text as="p" variant="caption" class="text-text-primary mt-1 line-clamp-1">{post.excerpt}</Text>
-      <ReadMoreLink />
-    </div>
-  </a>
-) : (
-  <!-- Tarjeta editorial con overlay siempre visible para related stories -->
-  <a href={postUrl} aria-label={ariaLabel} class="group relative block overflow-hidden aspect-video no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+        {/* Gradiente siempre visible para legibilidad del texto */}
+        <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
 
-    <!-- Imagen de portada sin efecto hover -->
-    <img src={post.coverImage.src} alt={post.coverImage.alt} width="800" height="450" loading="lazy" class="w-full h-full object-cover transition-transform duration-500" />
-
-    <!-- Gradiente siempre visible para legibilidad del texto -->
-    <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-
-    <!-- Fecha y titulo siempre visibles sobre la imagen -->
-    <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-16">
-      <PostDate date={post.publishedAt} />
-      <Text as="h2" variant="body-lg" class="leading-tight line-clamp-1">{post.title}</Text>
-    </div>
-  </a>
-)}
+        {/* Fecha y titulo siempre visibles sobre la imagen */}
+        <div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-16">
+          <PostDate date={post.publishedAt} />
+          <Text as="h2" variant="body-lg" class="leading-tight line-clamp-1">
+            {post.title}
+          </Text>
+        </div>
+      </a>
+    </>
+  )
+}
