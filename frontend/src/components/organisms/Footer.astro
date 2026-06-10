@@ -1,6 +1,6 @@
 ---
 import { FOOTER } from "../../ui-strings";
-import Text from "../atoms/Text.astro";
+import Text from "../atoms/Text/Text.astro";
 ---
 
 <footer class="px-5 sm:px-64 py-64 bg-surface flex items-center">
@@ -16,11 +16,7 @@ import Text from "../atoms/Text.astro";
     </Text>
 
     <!-- Copyright version desktop -->
-    <Text
-      as="span"
-      variant="label"
-      class="hidden sm:inline text-text-secondary uppercase"
-    >
+    <Text as="span" variant="label" class="hidden sm:inline text-text-secondary uppercase">
       {FOOTER.copyright}
     </Text>
   </div>

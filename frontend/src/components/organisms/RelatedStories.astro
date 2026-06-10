@@ -2,7 +2,7 @@
 import type { Post } from "../../lib/types";
 import PostCard from "../molecules/PostCard.astro";
 import SectionLabel from "../atoms/SectionLabel.astro";
-import Text from "../atoms/Text.astro";
+import Text from "../atoms/Text/Text.astro";
 
 interface Props {
   posts: Post[];
@@ -16,12 +16,10 @@ const { posts } = Astro.props;
     <!-- Etiqueta de sección -->
     <SectionLabel text="Continue Reading" />
     <!-- Título de la sección -->
-    <Text as="h2" variant="h2" id="related-title" class="text-h3 sm:text-h2">
-      Related stories
-    </Text>
+    <Text as="h2" variant="h2" id="related-title" class="text-h3 sm:text-h2"> Related stories </Text>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 ">
+  <div class="grid grid-cols-1 md:grid-cols-3">
     {
       posts.map((post) => (
         <div>

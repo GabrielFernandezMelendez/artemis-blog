@@ -1,6 +1,6 @@
 ---
 import SectionLabel from "../atoms/SectionLabel.astro";
-import Text from "../atoms/Text.astro";
+import Text from "../atoms/Text/Text.astro";
 
 interface Props {
   preheader: string;
@@ -16,11 +16,7 @@ const { preheader, title, description } = Astro.props;
   <Text as="h1" variant="h1" id="hero-title" class="max-w-[320px] sm:max-w-none sm:text-display">
     {title}
   </Text>
-  <Text
-    as="p"
-    variant="caption"
-    class="sm:text-h3 sm:font-bold text-text-primary"
-  >
+  <Text as="p" variant="caption" class="sm:text-h3 sm:font-bold text-text-primary">
     {description}
   </Text>
 </section>

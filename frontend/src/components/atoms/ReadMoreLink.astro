@@ -1,5 +1,5 @@
 ---
-import Text from "./Text.astro";
+import Text from "./Text/Text.astro";
 
 interface Props {
   label?: string;
@@ -8,6 +8,4 @@ interface Props {
 const { label = "Read story →" } = Astro.props;
 ---
 
-<Text as="span" variant="caption" class="text-warm hidden sm:inline mt-1"
-  >{label}</Text
->
+<Text as="span" variant="caption" class="text-warm hidden sm:inline mt-1">{label}</Text>
