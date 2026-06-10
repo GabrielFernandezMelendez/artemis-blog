@@ -1,9 +1,9 @@
 ---
-import type { Post } from "../../lib/types";
-import PostDate from "../atoms/PostDate/PostDate.astro";
-import ReadMoreLink from "../atoms/ReadMoreLink.astro";
-import Text from "../atoms/Text/Text.astro";
-import { buildPostUrl, buildAriaLabel, resolveVariant } from "../../lib/postCard";
+import type { Post } from "../../../lib/types";
+import PostDate from "../../atoms/PostDate/PostDate.astro";
+import ReadMoreLink from "../../atoms/ReadMoreLink/ReadMoreLink.astro";
+import Text from "../../atoms/Text/Text.astro";
+import { buildPostUrl, buildAriaLabel, resolveVariant } from "./postCard";
 
 interface Props {
   post: Post;
