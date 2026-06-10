@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { getPosts, getPostBySlug, getPostsByTag } from "../lib/api";
+import { getPosts, getPostBySlug, getPostsByTag } from "./api";
 import type { Post } from "../lib/types";
 import type { Mock } from "vitest";
 
@@ -46,9 +46,7 @@ describe("api.ts", () => {
       const posts = await getPosts();
 
       expect(posts).toEqual(mockPosts);
-      expect(fetchMock).toHaveBeenCalledWith(
-        "http://localhost:3000/api/v1/posts",
-      );
+      expect(fetchMock).toHaveBeenCalledWith("http://localhost:3000/api/v1/posts");
     });
 
     it("throws an error if the server fails", async () => {
@@ -65,9 +63,7 @@ describe("api.ts", () => {
       const post = await getPostBySlug("post-1");
 
       expect(post).toEqual(mockPosts[0]);
-      expect(fetchMock).toHaveBeenCalledWith(
-        "http://localhost:3000/api/v1/posts/post-1",
-      );
+      expect(fetchMock).toHaveBeenCalledWith("http://localhost:3000/api/v1/posts/post-1");
     });
 
     it("returns null for a nonexistent slug", async () => {
@@ -86,9 +82,7 @@ describe("api.ts", () => {
       const result = await getPostsByTag("astro");
 
       expect(result).toEqual(mockPosts);
-      expect(fetchMock).toHaveBeenCalledWith(
-        "http://localhost:3000/api/v1/posts?tag=astro",
-      );
+      expect(fetchMock).toHaveBeenCalledWith("http://localhost:3000/api/v1/posts?tag=astro");
     });
 
     it("returns an empty array for a nonexistent tag", async () => {
