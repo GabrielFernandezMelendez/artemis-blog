@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { formatDate } from "../../lib/formatDate";
+import { formatDate } from "./formatDate";
 
 describe("formatDate", () => {
   const cases = [
@@ -12,15 +12,9 @@ describe("formatDate", () => {
     { date: "2026", format: undefined, expected: "APR 1, 2026" },
   ] as const;
 
-  it.each(cases)(
-    'returns "$expected" for $date (format: $format)',
-    ({ date, format, expected }) => {
-      const result = formatDate(
-        date,
-        format as Parameters<typeof formatDate>[1],
-      );
-      expect(result).toBe(expected);
-      expect(result).toBe(result.toUpperCase());
-    },
-  );
+  it.each(cases)('returns "$expected" for $date (format: $format)', ({ date, format, expected }) => {
+    const result = formatDate(date, format as Parameters<typeof formatDate>[1]);
+    expect(result).toBe(expected);
+    expect(result).toBe(result.toUpperCase());
+  });
 });
