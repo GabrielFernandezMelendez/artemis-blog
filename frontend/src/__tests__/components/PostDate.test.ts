@@ -15,7 +15,10 @@ describe("formatDate", () => {
   it.each(cases)(
     'returns "$expected" for $date (format: $format)',
     ({ date, format, expected }) => {
-      const result = formatDate(date, format as any);
+      const result = formatDate(
+        date,
+        format as Parameters<typeof formatDate>[1],
+      );
       expect(result).toBe(expected);
       expect(result).toBe(result.toUpperCase());
     },
