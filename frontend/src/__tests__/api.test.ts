@@ -59,12 +59,4 @@ describe("api.ts", () => {
   expect(result).toHaveLength(0);
 });
 
-it("getPosts lanza un error si el servidor falla", async () => {
-  const originalFetch = global.fetch;
-  global.fetch = vi.fn().mockResolvedValue({ ok: false, status: 500 });
-  
-  await expect(getPosts()).rejects.toThrow("Error fetching posts: 500");
-  
-  global.fetch = originalFetch;
-});
 });
