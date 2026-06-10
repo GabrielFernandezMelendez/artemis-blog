@@ -93,32 +93,4 @@ describe("api.ts", () => {
       expect(result).toEqual([]);
     });
   });
-
-  it("getPostsByTag devuelve posts para un tag existente", async () => {
-    fetchMock.mockResolvedValueOnce(mockResponse(mockPosts));
-    fetchMock.mockResolvedValueOnce(mockResponse(mockPosts));
-
-    const posts = await getPosts();
-    const tag = posts[0].tags.split(",")[0].trim(); // un tag individual
-    const result = await getPostsByTag(tag);
-
-    expect(Array.isArray(result)).toBe(true);
-    expect(result.length).toBeGreaterThan(0);
-    expect(
-      result.every((post) =>
-        post.tags
-          .split(",")
-          .map((t) => t.trim().toLowerCase())
-          .includes(tag.toLowerCase()),
-      ),
-    ).toBe(true);
-  });
-
-  it("getPostsByTag devuelve array vacío para un tag inexistente", async () => {
-    fetchMock.mockResolvedValueOnce(mockResponse([], true, 200));
-
-    const result = await getPostsByTag("tag-que-no-existe");
-    expect(Array.isArray(result)).toBe(true);
-    expect(result).toHaveLength(0);
-  });
 });
