@@ -48,6 +48,29 @@ describe('Text', () => {
     expect(element).toHaveTextContent('Content')
   })
 
+  test.each([
+    ['display', 'md:text-display'],
+    ['heading-1', 'md:text-heading-1'],
+    ['heading-2', 'md:text-heading-2'],
+    ['heading-3', 'md:text-heading-3'],
+    ['body-large', 'md:text-body-large'],
+    ['body', 'md:text-body'],
+    ['caption', 'md:text-caption'],
+    ['label', 'md:text-label'],
+  ] as const)(
+    'applies the desktop variant "%s class"',
+    async (variant, expectedClass) => {
+      const container = await render(Text, {
+        props: { variant, desktopVariant: variant },
+        slots: { default: 'Content' },
+      })
+
+      const element = container.querySelector('p')
+
+      expect(element).toHaveClass(expectedClass)
+    },
+  )
+
   it('combines the variant class with an additional class', async () => {
     const container = await render(Text, {
       props: {
