@@ -37,6 +37,9 @@ importers:
         specifier: 6.4.4
         version: 6.4.4(@types/node@24.12.4)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.61.1)(tsx@4.22.3)
     devDependencies:
+      '@astrojs/markdown-remark':
+        specifier: 7.2.0
+        version: 7.2.0
       '@tailwindcss/vite':
         specifier: 4.3.0
         version: 4.3.0(vite@7.3.5(@types/node@24.12.4)(jiti@2.7.0)(lightningcss@1.32.0)(tsx@4.22.3))

@@ -9,6 +9,6 @@ describe('Home', () => {
 
     const heading = getByRole(container, 'heading', { level: 1 })
 
-    expect(heading).toHaveTextContent('Hello Moon!')
+    expect(heading).toHaveTextContent('The Artemis Diary')
   })
 })

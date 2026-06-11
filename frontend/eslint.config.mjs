@@ -9,16 +9,20 @@ export default tseslint.config(
   {
     languageOptions: {
       parserOptions: {
-        project: true,
+        project: ['./tsconfig.json'],
         tsconfigRootDir: import.meta.dirname,
       },
     },
   },
-  eslintConfigPrettier,
-  ...tseslint.configs.recommendedTypeChecked,
+  ...tseslint.configs.strictTypeChecked,
   ...eslintPluginAstro.configs['flat/recommended'],
   {
     files: ['**/*.mjs'],
     ...tseslint.configs.disableTypeChecked,
   },
+  {
+    files: ['**/*.astro/*.ts'],
+    ...tseslint.configs.disableTypeChecked,
+  },
+  eslintConfigPrettier,
 )
