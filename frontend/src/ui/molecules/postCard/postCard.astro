@@ -1,0 +1,49 @@
+---
+import type { Post } from '@/core/api'
+
+type Props = {
+  post: Post
+}
+
+const { post } = Astro.props
+
+const formattedDate = new Date(post.publishedAt)
+  .toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  })
+  .toUpperCase()
+---
+
+<a
+  href={`/${post.slug}`}
+  class="group h-full"
+  aria-label={`go to "${post.title}" article`}
+>
+  <article class="relative flex flex-col h-full min-h-[24rem]">
+    <div
+      class="z-1 mt-auto bg-linear-to-t from-background-black/95 via-background-black/50 to-transparent p-16 md:p-24 transition-opacity duration-300 opacity-0 group-hover:opacity-100 max-lg:opacity-100"
+    >
+      <time
+        datetime={post.publishedAt}
+        class="text-label uppercase text-text-secondary"
+      >
+        {formattedDate}
+      </time>
+      <h2 class="text-heading-3 mt-8 line-clamp-2">{post.title}</h2>
+      <p class="text-body mt-8 line-clamp-3">
+        {post.excerpt}
+      </p>
+
+      <span class="text-caption text-accent-lunar-gold">Read story →</span>
+    </div>
+
+    <img
+      src={post.coverImage.src}
+      alt=""
+      loading="lazy"
+      class="absolute z-0 inset-0 size-full object-cover"
+    />
+  </article>
+</a>

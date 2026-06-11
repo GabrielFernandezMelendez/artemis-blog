@@ -1,19 +1,18 @@
 ---
 import { getAllPosts } from '@/core/api'
 import Hero from '@/ui/organisms/hero/hero.astro'
+import PostCard from '@/ui/molecules/postCard/postCard.astro'
 
 const posts = await getAllPosts()
 ---
 
 <Hero />
 
-<ul>
+<ul class="container grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-2">
   {
     posts.map((post) => (
-      <li>
-        <article>
-          <h2 class="text-heading-3">{post.title}</h2>
-        </article>
+      <li class="lg:first:col-span-2 lg:first:row-span-2">
+        <PostCard post={post} />
       </li>
     ))
   }

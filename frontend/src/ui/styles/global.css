@@ -68,3 +68,7 @@
 @utility container {
   @apply mx-auto max-w-8xl;
 }
+
+img {
+  max-width: 100%;
+}
