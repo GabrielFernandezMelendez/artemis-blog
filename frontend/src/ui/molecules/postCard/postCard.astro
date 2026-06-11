@@ -1,5 +1,6 @@
 ---
 import type { Post } from '@/core/api'
+import Text from '@/ui/atoms/text/text.astro'
 
 type Props = {
   post: Post
@@ -25,12 +26,14 @@ const formattedDate = new Date(post.publishedAt)
     <div
       class="z-1 mt-auto bg-linear-to-t from-background-black/95 via-background-black/50 to-transparent p-16 md:p-24 transition-opacity duration-300 opacity-0 group-hover:opacity-100 max-lg:opacity-100"
     >
-      <time
+      <Text
+        variant="label"
+        tag="time"
+        class="uppercase text-text-secondary"
         datetime={post.publishedAt}
-        class="text-label uppercase text-text-secondary"
       >
         {formattedDate}
-      </time>
+      </Text>
       <h2 class="text-heading-3 mt-8 line-clamp-2">{post.title}</h2>
       <p class="text-body mt-8 line-clamp-3">
         {post.excerpt}

@@ -1,12 +1,16 @@
-<section class="container py-64 px-24 md:py-96 md:px-64">
-  <span class="text-label text-accent-lunar-gold uppercase"
-    >NASA · ARTEMIS II</span
-  >
-  <h1 class="text-heading-2 md:text-display my-16 md:my-24">
-    The Artemis Diary
-  </h1>
+---
+import Text from '@/ui/atoms/text/text.astro'
+---
 
-  <p class="text-body md:text-heading-3">
+<section class="container py-64 px-24 md:py-96 md:px-64">
+  <Text variant="label" tag="span" class="text-accent-lunar-gold uppercase"
+    >NASA · ARTEMIS II</Text
+  >
+  <Text variant="heading-2" tag="h1" class="my-16 md:my-24">
+    The Artemis Diary
+  </Text>
+
+  <Text variant="body" class="md:text-heading-3">
     Stories, images and field notes from NASA’s Artemis II mission.
-  </p>
+  </Text>
 </section>

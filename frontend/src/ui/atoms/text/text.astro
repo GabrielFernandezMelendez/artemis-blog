@@ -1,0 +1,57 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+type TextVariant =
+  | 'display'
+  | 'heading-1'
+  | 'heading-2'
+  | 'heading-3'
+  | 'body-large'
+  | 'body'
+  | 'caption'
+  | 'label'
+
+type TextTag =
+  | 'p'
+  | 'span'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'label'
+  | 'time'
+  | 'a'
+  | 'div'
+
+type Props<T extends TextTag = TextTag> = {
+  variant?: TextVariant
+  tag?: T
+  class?: string
+} & Omit<HTMLAttributes<T>, 'class'>
+
+const {
+  tag: Tag = 'p',
+  class: className = '',
+  variant = 'body',
+  ...rest
+} = Astro.props
+
+const variantClasses: Record<TextVariant, string> = {
+  display: 'text-display',
+  'heading-1': 'text-heading-1',
+  'heading-2': 'text-heading-2',
+  'heading-3': 'text-heading-3',
+  'body-large': 'text-body-large',
+  body: 'text-body',
+  caption: 'text-caption',
+  label: 'text-label',
+}
+
+const classes = [variantClasses[variant], className].filter(Boolean).join(' ')
+---
+
+<Tag class={classes} {...rest}>
+  <slot />
+</Tag>
