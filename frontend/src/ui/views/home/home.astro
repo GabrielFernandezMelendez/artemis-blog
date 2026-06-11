@@ -1,5 +1,19 @@
-<div
-  class="min-h-screen bg-background-black text-text-primary flex items-center justify-center"
->
-  <h1 class="text-display">The Artemis Diary</h1>
-</div>
+---
+import { getAllPosts } from '@/core/api'
+
+const posts = await getAllPosts()
+---
+
+<h1 class="text-display">The Artemis Diary</h1>
+
+<ul>
+  {
+    posts.map((post) => (
+      <li>
+        <article>
+          <h2 class="text-heading-3">{post.title}</h2>
+        </article>
+      </li>
+    ))
+  }
+</ul>
