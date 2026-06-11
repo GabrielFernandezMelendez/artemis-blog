@@ -11,9 +11,27 @@ import '@/ui/styles/global.css'
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <link
+      rel="preload"
+      href="/fonts/inter-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/inter-700.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <title>The Artemis diary</title>
+    <meta
+      name="description"
+      content="Stories, images and field notes from NASA’s Artemis II mission."
+    />
   </head>
-  <body>
+  <body class="font-sans antialiased">
     <BaseLayout><Home /></BaseLayout>
   </body>
 </html>

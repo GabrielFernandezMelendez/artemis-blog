@@ -1,10 +1,27 @@
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Default Tailwind theme variable resets: https://tailwindcss.com/docs/theme#theme-variable-namespaces */
   --color-*: initial;
   --spacing-*: initial;
   --text-*: initial;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
 
   /* Colors */
   --color-background-black: #000000;
@@ -54,11 +71,11 @@
   --text-body--font-weight: 400;
   --text-body--line-height: 1.6;
 
-  --text-caption: 0.8125rem;
+  --text-caption: 0.875rem;
   --text-caption--font-weight: 400;
   --text-caption--line-height: 1.4;
 
-  --text-label: 0.75rem;
+  --text-label: 0.825rem;
   --text-label--font-weight: 400;
   --text-label--line-height: 1.2;
 
