@@ -1,10 +1,11 @@
 ---
 import { getAllPosts } from '@/core/api'
+import Hero from '@/ui/organisms/hero/hero.astro'
 
 const posts = await getAllPosts()
 ---
 
-<h1 class="text-display">The Artemis Diary</h1>
+<Hero />
 
 <ul>
   {
