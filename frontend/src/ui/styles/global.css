@@ -53,4 +53,10 @@
 
   --text-label: 0.75rem;
   --text-label--font-weight: 400;
+
+  --container-8xl: 90rem;
+}
+
+@utility container {
+  @apply mx-auto max-w-8xl;
 }
