@@ -1,6 +1,7 @@
 ---
-import '@/ui/styles/global.css'
+import BaseLayout from '@/ui/layouts/base/baseLayout.astro'
 import Home from '@/ui/views/home/home.astro'
+import '@/ui/styles/global.css'
 ---
 
 <html lang="en">
@@ -13,6 +14,6 @@ import Home from '@/ui/views/home/home.astro'
     <title>The Artemis diary</title>
   </head>
   <body>
-    <Home />
+    <BaseLayout><Home /></BaseLayout>
   </body>
 </html>
