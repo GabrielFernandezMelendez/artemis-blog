@@ -1,7 +1,10 @@
 @import 'tailwindcss';
 
 @theme {
-  --*: initial;
+  /* Default Tailwind theme variable resets: https://tailwindcss.com/docs/theme#theme-variable-namespaces */
+  --color-*: initial;
+  --spacing-*: initial;
+  --text-*: initial;
 
   /* Colors */
   --color-background-black: #000000;
