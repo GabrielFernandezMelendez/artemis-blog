@@ -5,24 +5,34 @@ import Footer from "../../components/organisms/Footer/Footer.astro";
 import RelatedStories from "../../components/organisms/RelatedStories/RelatedStories.astro";
 import PostMeta from "../../components/atoms/PostMeta/PostMeta.astro";
 import Text from "../../components/atoms/Text/Text.astro";
-import { getPostBySlug, getPosts, getPostsByTag } from "../../lib/api";
+import { GetPostBySlug } from "../../post/application/GetPostBySlug";
+import { GetPosts } from "../../post/application/GetPosts";
+import { GetPostsByTag } from "../../post/application/GetPostsByTag";
+import { HttpPostRepository } from "../../post/infrastructure/HttpPostRepository";
 
 export async function getStaticPaths() {
-  const posts = await getPosts();
+  const repository = new HttpPostRepository();
+  const getPosts = new GetPosts(repository);
+  const posts = await getPosts.execute();
+
   return posts.map((post) => ({
     params: { slug: post.slug },
   }));
 }
 
+const repository = new HttpPostRepository();
+const getPostBySlug = new GetPostBySlug(repository);
+const getPostsByTag = new GetPostsByTag(repository);
+
 const { slug } = Astro.params;
-const post = await getPostBySlug(slug!);
+const post = await getPostBySlug.execute(slug!);
 
 if (!post) {
   return Astro.redirect("/404");
 }
 
 const firstTag = post.tags.split(",")[0].trim();
-const tagPosts = await getPostsByTag(firstTag);
+const tagPosts = await getPostsByTag.execute(firstTag);
 const relatedPosts = tagPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
 ---
 

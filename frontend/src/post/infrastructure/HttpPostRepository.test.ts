@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { getPosts, getPostBySlug, getPostsByTag } from "./api";
-import type { Post } from "../lib/types";
 import type { Mock } from "vitest";
+import type { Post } from "../domain/Post";
+import { HttpPostRepository } from "./HttpPostRepository";
 
 const mockPosts: Post[] = [
   {
@@ -24,14 +24,16 @@ const mockResponse = (data: unknown, ok = true, status = 200) => ({
   json: vi.fn().mockResolvedValue(data),
 });
 
-describe("api.ts", () => {
+describe("HttpPostRepository", () => {
   let originalFetch: typeof global.fetch;
   let fetchMock: Mock;
+  let repository: HttpPostRepository;
 
   beforeEach(() => {
     originalFetch = global.fetch;
     fetchMock = vi.fn();
     global.fetch = fetchMock as unknown as typeof global.fetch;
+    repository = new HttpPostRepository();
   });
 
   afterEach(() => {
@@ -39,11 +41,11 @@ describe("api.ts", () => {
     vi.restoreAllMocks();
   });
 
-  describe("getPosts()", () => {
+  describe("findAll()", () => {
     it("returns an array of posts", async () => {
       fetchMock.mockResolvedValueOnce(mockResponse(mockPosts));
 
-      const posts = await getPosts();
+      const posts = await repository.findAll();
 
       expect(posts).toEqual(mockPosts);
       expect(fetchMock).toHaveBeenCalledWith("http://localhost:3000/api/v1/posts");
@@ -52,15 +54,15 @@ describe("api.ts", () => {
     it("throws an error if the server fails", async () => {
       fetchMock.mockResolvedValueOnce(mockResponse(null, false, 500));
 
-      await expect(getPosts()).rejects.toThrow("Error fetching posts: 500");
+      await expect(repository.findAll()).rejects.toThrow("Error fetching posts: 500");
     });
   });
 
-  describe("getPostBySlug(slug)", () => {
+  describe("findBySlug(slug)", () => {
     it("returns the correct post for a valid slug", async () => {
       fetchMock.mockResolvedValueOnce(mockResponse(mockPosts[0]));
 
-      const post = await getPostBySlug("post-1");
+      const post = await repository.findBySlug("post-1");
 
       expect(post).toEqual(mockPosts[0]);
       expect(fetchMock).toHaveBeenCalledWith("http://localhost:3000/api/v1/posts/post-1");
@@ -69,17 +71,17 @@ describe("api.ts", () => {
     it("returns null for a nonexistent slug", async () => {
       fetchMock.mockResolvedValueOnce({ ok: false, status: 404 });
 
-      const result = await getPostBySlug("slug-that-does-not-exist");
+      const result = await repository.findBySlug("slug-that-does-not-exist");
 
       expect(result).toBeNull();
     });
   });
 
-  describe("getPostsByTag(tag)", () => {
+  describe("findByTag(tag)", () => {
     it("returns posts for an existing tag", async () => {
       fetchMock.mockResolvedValueOnce(mockResponse(mockPosts));
 
-      const result = await getPostsByTag("astro");
+      const result = await repository.findByTag("astro");
 
       expect(result).toEqual(mockPosts);
       expect(fetchMock).toHaveBeenCalledWith("http://localhost:3000/api/v1/posts?tag=astro");
@@ -88,7 +90,7 @@ describe("api.ts", () => {
     it("returns an empty array for a nonexistent tag", async () => {
       fetchMock.mockResolvedValueOnce(mockResponse([], true, 200));
 
-      const result = await getPostsByTag("tag-that-does-not-exist");
+      const result = await repository.findByTag("tag-that-does-not-exist");
 
       expect(result).toEqual([]);
     });

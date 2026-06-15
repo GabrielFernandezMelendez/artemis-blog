@@ -5,9 +5,12 @@ import Footer from "../components/organisms/Footer/Footer.astro";
 import PhotoGrid from "../components/organisms/PhotoGrid/PhotoGrid.astro";
 import Hero from "../components/organisms/Hero/Hero.astro";
 import { HERO } from "../ui-strings";
-import { getPosts } from "../lib/api";
+import { GetPosts } from "../post/application/GetPosts";
+import { HttpPostRepository } from "../post/infrastructure/HttpPostRepository";
 
-const posts = await getPosts();
+const repository = new HttpPostRepository();
+const getPosts = new GetPosts(repository);
+const posts = await getPosts.execute();
 ---
 
 <BaseLayout>
